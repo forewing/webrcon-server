@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: gunicorn -b 0.0.0.0:27020 -w4 main:app
+    volumes:
+      - .:/srv/django
+    ports:
+      - "27020:27020"
+    restart: always
