@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, abort
+from flask import Flask, request, Response, abort, redirect
 
 import srcds
 import config
@@ -19,6 +19,11 @@ def api_exec():
         return Response(res)
 
     return abort(400)
+
+
+@app.route('/api/connect', methods=['GET'])
+def api_connect():
+    return redirect(f"steam://connect/{config.ip}:{config.port}", code=301)
 
 
 if __name__ == '__main__':

@@ -16,15 +16,21 @@ Now it will listen on `localhost:27020` .
 
 ### API
 
-```
-curl -X POST 127.0.0.1:27020/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
-```
+1. exec
 
-or
+    ```
+    curl -X POST 127.0.0.1:27020/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
+    ```
 
-```
-curl -v -X GET '127.0.0.1:27020/api/exec?cmd=YOUR_CMD_HERE'
-```
+    or
+
+    ```
+    curl -v -X GET '127.0.0.1:27020/api/exec?cmd=YOUR_CMD_HERE'
+    ```
+
+2. connect
+
+    Visit `127.0.0.1:27020/api/connect`, you will be 301 redired to steam game launching shortcut.
 
 ### GUI
 
