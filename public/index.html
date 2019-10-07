@@ -1,1 +1,40 @@
-<!-- Add your own views here -->
+<!doctype html>
+<html>
+
+<head>
+    <title>WEBRCON</title>
+</head>
+
+<body>
+    <h1>WEBRCON GUI(WIP)</h1>
+    <p>THIS IS ONLY A SIMPLEST SHORTCUT TO TEST THE API, willing to accept PRs that implements it beautifully.</p>
+
+    Command:<br>
+    <input type="text" name="cmd" value="sv_cheats" id="command"><br>
+    <input type="button" value="Submit" onclick="exec()"><br>
+    Result:<br>
+    <textarea id="result" rows="4" cols="60">Server's response here.</textarea>
+</body>
+
+<script>
+    var write = text => {
+        document.getElementById('result').value = text;
+        console.log(text);
+    };
+
+    var exec = () => {
+        fetch('/api/exec?cmd=' + document.getElementById('command').value)
+            .then(
+                res => {
+                    if (res.status !== 200) {
+                        write('Fail with Status Code: ' + res.status);
+                    } else {
+                        res.text().then(text => write(text));
+                    }
+                }
+            )
+            .catch(err => console.log('Fetch Error :-S', err));
+    };
+</script>
+
+</html>
