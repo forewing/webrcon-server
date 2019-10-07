@@ -14,6 +14,8 @@ Now it will listen on `localhost:27020` .
 
 ## Usage
 
+### API
+
 ```
 curl -X POST 127.0.0.1:27020/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
 ```
@@ -23,3 +25,9 @@ or
 ```
 curl -v -X GET '127.0.0.1:27020/api/exec?cmd=YOUR_CMD_HERE'
 ```
+
+### GUI
+
+Browse to `http://127.0.0.1:27020/`
+
+> You may put your own frontend files to ./public, THIS IS A TODO FEATURE that will be added to the repo in future.
