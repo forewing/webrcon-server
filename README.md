@@ -14,4 +14,12 @@ Now it will listen on `localhost:27020` .
 
 ## Usage
 
-`curl -X POST 127.0.0.1:27020/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}' `
+```
+curl -X POST 127.0.0.1:27020/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
+```
+
+or
+
+```
+curl -v -X GET '127.0.0.1:27020/api/exec?cmd=YOUR_CMD_HERE'
+```

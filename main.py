@@ -6,14 +6,18 @@ import config
 app = Flask(__name__)
 
 
-@app.route('/api/exec', methods=['POST'])
+@app.route('/api/exec', methods=['GET', 'POST'])
 def api_exec():
-    # print(request.json)
-    cmd = request.json.get("cmd")
+    if request.method == 'GET':
+        cmd = request.args.get("cmd")
+    elif request.method == 'POST':
+        cmd = request.json.get("cmd")
+
     if cmd:
         server = srcds.SourceRcon(config.ip, config.port, config.password)
         res = server.rcon(cmd)
         return Response(res)
+
     return abort(400)
 
 
