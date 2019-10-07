@@ -1,0 +1,6 @@
+0.0.0.0:27020 {
+    root /var/www/public
+    proxy /api http://server:27020
+
+    log stdout
+}

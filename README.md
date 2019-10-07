@@ -4,7 +4,7 @@ A web based client's server side for srcds' RCON protocol.
 
 ## Deployment
 
-1. `cp config.py.example config.py`
+1. `cp server/config.py.example server/config.py`
 
     Then edit ip, port, password to your own server's.
 
