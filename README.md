@@ -36,4 +36,4 @@ Now it will listen on `localhost:27020` .
 
 Browse to `http://127.0.0.1:27020/`
 
-> You may put your own frontend files to ./public, THIS IS A TODO FEATURE that will be added to the repo in future.
+> You may put your own frontend files to /client/public, THIS IS A TODO FEATURE that will be added to the repo in future.

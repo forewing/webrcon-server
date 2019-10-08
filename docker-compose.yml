@@ -5,7 +5,7 @@ services:
     image: abiosoft/caddy
     volumes:
       - ./Caddyfile:/etc/Caddyfile
-      - ./public:/var/www/public
+      - ./client/public:/var/www/public
     ports:
       - "27020:27020"
     links:
