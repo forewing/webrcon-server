@@ -4,7 +4,7 @@ Vue.component('shortcut-group', {
     <div class="card bg-light mb-3">
         <div class="card-header bg-middleblue">
             <h4 class="card-title my-auto">
-                <span class="oi oi-puzzle-piece" title="browser" aria-hidden="true"></span> {{ name }}
+                <span class="oi oi-puzzle-piece" title="puzzle-piece" aria-hidden="true"></span> {{ name }}
             </h4>
         </div>
         <ul class="list-group list-group-flush">
