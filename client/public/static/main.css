@@ -1,0 +1,22 @@
+body {
+    background: #d2e9fb;
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.bg-turqgreen {
+    background-color: #97D8B2;
+}
+
+.bg-middleblue{
+    background-color: #78D5D7;
+}
+
+textarea {
+    resize: none;
+}

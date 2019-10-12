@@ -36,4 +36,26 @@ Now it will listen on `localhost:27020` .
 
 Browse to `http://127.0.0.1:27020/`
 
-> You may put your own frontend files to /client/public, THIS IS A TODO FEATURE that will be added to the repo in future.
+Please help us to add more command shortcut.
+
+In client/public/static/main.js, edit the object
+
+```
+shortcutGroups: {
+    "Rounds": [
+        { id: 1, args: true, default: "5", name: "restart", cmd: "mp_restartgame" },
+        { id: 2, args: true, default: "30", name: "maxrounds", cmd: "mp_maxrounds" },
+    ],
+    "Bots": [
+        { id: 1, args: false, default: "", name: "kick bot", cmd: "bot_kick" },
+        { id: 2, args: false, default: "", name: "kick ct", cmd: "bot_kick ct" },
+        { id: 3, args: false, default: "", name: "kick t", cmd: "bot_kick t" },
+        { id: 4, args: false, default: "", name: "add ct", cmd: "bot_add_ct" },
+        { id: 5, args: false, default: "", name: "add t", cmd: "bot_add_t" },
+    ],
+    "Cheats": [
+        { id: 1, args: false, default: "", name: "cheat on", cmd: "sv_cheats 1" },
+        { id: 2, args: false, default: "", name: "cheat off", cmd: "sv_cheats 0" },
+    ]
+}
+```
