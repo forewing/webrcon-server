@@ -3,6 +3,11 @@
 
 <head>
     <title>WEBRCON</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
 </head>
 
 <body>
@@ -11,32 +16,19 @@
 
     <p><a href="/api/connect">Launch game and connect to server.</a></p>
 
-    Command:<br>
-    <input type="text" name="cmd" value="sv_cheats" id="command"><br>
-    <input type="button" value="Submit" onclick="exec()"><br>
-    Result:<br>
-    <textarea id="result" rows="4" cols="60">Server's response here.</textarea>
+    <div id="app">
+        <input v-model="command" placeholder="You Command Here."><br>
+        <button v-on:click="sendExecPanel(command)">exec</button><br>
+        <textarea v-model="reply" placeholder="Server's reply here." cols="60" rows="5"></textarea>
+
+        <shortcut-group v-for="(shortcuts, name) in shortcutGroups" v-bind:key="name" v-bind:shortcuts="shortcuts"
+            v-bind:name="name" v-on:send-cmd="sendExecPanel">
+        </shortcut-group>
+    </div>
+
+
 </body>
 
-<script>
-    var write = text => {
-        document.getElementById('result').value = text;
-        console.log(text);
-    };
-
-    var exec = () => {
-        fetch('/api/exec?cmd=' + document.getElementById('command').value)
-            .then(
-                res => {
-                    if (res.status !== 200) {
-                        write('Fail with Status Code: ' + res.status);
-                    } else {
-                        res.text().then(text => write(text));
-                    }
-                }
-            )
-            .catch(err => console.log('Fetch Error :-S', err));
-    };
-</script>
+<script src="./static/main.js"></script>
 
 </html>
