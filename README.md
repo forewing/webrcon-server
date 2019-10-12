@@ -1,6 +1,8 @@
 # WEBRCON-Server
 
-A web based client's server side for srcds' RCON protocol.
+A web based control panel for srcds' RCON protocol (CS:GO).
+
+![preview](preview.png)
 
 ## Deployment
 
