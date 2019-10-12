@@ -70,6 +70,10 @@ var app = new Vue({
                 { id: 1, args: true, default: "5", name: "restart", cmd: "mp_restartgame" },
                 { id: 2, args: true, default: "30", name: "maxrounds", cmd: "mp_maxrounds" },
             ],
+            "maps": [
+                { id: 1, args: true, default: "*", name: "list maps", cmd: "maps" },
+                { id: 2, args: true, default: "de_dust2", name: "change map", cmd: "map" },
+            ],
             "Bots": [
                 { id: 1, args: false, default: "", name: "kick bot", cmd: "bot_kick" },
                 { id: 2, args: false, default: "", name: "kick ct", cmd: "bot_kick ct" },
