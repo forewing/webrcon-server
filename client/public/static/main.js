@@ -19,7 +19,6 @@ Vue.component('shortcut-group', {
     `,
     methods: {
         emitExec(cmd) {
-            console.log(cmd);
             this.$emit('send-cmd', cmd)
         }
     }
@@ -50,7 +49,6 @@ Vue.component('shortcut-panel', {
     },
     methods: {
         emitExec() {
-            console.log(this.shortcut.cmd);
             var cmd = this.shortcut.cmd;
             if (this.shortcut.args) {
                 cmd += ` ${this.args}`;
@@ -67,23 +65,25 @@ var app = new Vue({
         reply: '',
         shortcutGroups: {
             "Rounds": [
-                { id: 1, args: true, default: "5", name: "restart", cmd: "mp_restartgame" },
-                { id: 2, args: true, default: "30", name: "maxrounds", cmd: "mp_maxrounds" },
+                { id: 1, args: true, default: "5", name: "Restart Game", cmd: "mp_restartgame" },
+                { id: 2, args: true, default: "30", name: "Max Rounds", cmd: "mp_maxrounds" },
+                { id: 3, args: true, default: "999", name: "Warmup Time", cmd: "mp_warmuptime" },
             ],
-            "maps": [
-                { id: 1, args: true, default: "*", name: "list maps", cmd: "maps" },
-                { id: 2, args: true, default: "de_dust2", name: "change map", cmd: "map" },
+            "Maps": [
+                { id: 1, args: true, default: "*", name: "List Maps", cmd: "maps" },
+                { id: 2, args: true, default: "de_dust2", name: "Change Map", cmd: "map" },
             ],
             "Bots": [
-                { id: 1, args: false, default: "", name: "kick bot", cmd: "bot_kick" },
-                { id: 2, args: false, default: "", name: "kick ct", cmd: "bot_kick ct" },
-                { id: 3, args: false, default: "", name: "kick t", cmd: "bot_kick t" },
-                { id: 4, args: false, default: "", name: "add ct", cmd: "bot_add_ct" },
-                { id: 5, args: false, default: "", name: "add t", cmd: "bot_add_t" },
+                { id: 1, args: false, default: "", name: "Kick All Bot", cmd: "bot_kick" },
+                { id: 2, args: false, default: "", name: "Kick CT", cmd: "bot_kick ct" },
+                { id: 3, args: false, default: "", name: "Kick T", cmd: "bot_kick t" },
+                { id: 4, args: false, default: "", name: "Add CT", cmd: "bot_add_ct" },
+                { id: 5, args: false, default: "", name: "Add T", cmd: "bot_add_t" },
             ],
             "Cheats": [
-                { id: 1, args: false, default: "", name: "cheat on", cmd: "sv_cheats 1" },
-                { id: 2, args: false, default: "", name: "cheat off", cmd: "sv_cheats 0" },
+                { id: 1, args: false, default: "", name: "Cheat On", cmd: "sv_cheats 1" },
+                { id: 2, args: false, default: "", name: "Cheat Off", cmd: "sv_cheats 0" },
+                { id: 3, args: true, default: "1.0", name: "Time Scale", cmd: "host_timescale" },
             ]
         },
     },
@@ -100,7 +100,6 @@ var app = new Vue({
                 .catch(err => console.log('Fetch Error :-S', err));
         },
         sendExecPanel: function (cmd) {
-            console.log('emitted')
             this.command = cmd;
             this.sendExec(
                 this.updateReply,
