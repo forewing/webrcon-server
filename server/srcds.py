@@ -94,7 +94,7 @@ class SourceRcon(object):
 
         self.reqid += 1
         data = struct.pack('<l', self.reqid) + struct.pack('<l',
-                                                           cmd) + bytearray(message, 'ascii') + b'\x00\x00'
+                                                           cmd) + bytearray(message, 'utf-8') + b'\x00\x00'
         self.tcp.send(struct.pack('<l', len(data)) + data)
 
     def receive(self):
