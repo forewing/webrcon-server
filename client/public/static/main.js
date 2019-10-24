@@ -73,6 +73,12 @@ var app = new Vue({
                 { id: 1, args: true, default: "*", name: "List Maps", cmd: "maps" },
                 { id: 2, args: true, default: "de_dust2", name: "Change Map", cmd: "map" },
             ],
+            "Users": [
+                { id: 1, args: false, default: "", name: "List Users", cmd: "users" },
+                { id: 2, args: true, default: "", name: "User Info", cmd: "user" },
+                { id: 3, args: true, default: "", name: "Kick User", cmd: "kick" },
+                { id: 4, args: true, default: "", name: "Kill User", cmd: "kill" },
+            ],
             "Bots": [
                 { id: 1, args: false, default: "", name: "Kick All Bot", cmd: "bot_kick" },
                 { id: 2, args: false, default: "", name: "Kick CT", cmd: "bot_kick ct" },
