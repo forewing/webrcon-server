@@ -92,6 +92,7 @@ var app = new Vue({
                 { id: 3, args: true, default: "ar_baggage", name: "Arms Race", cmd: "game_mode 0; game_type 1; changelevel" },
                 { id: 4, args: true, default: "de_dust2", name: "Demolition", cmd: "game_mode 1; game_type 1; changelevel" },
                 { id: 5, args: true, default: "de_dust2", name: "Deathmatch", cmd: "game_mode 2; game_type 1; changelevel" },
+                { id: 6, args: true, default: "dz_sirocco", name: "Dangerzone", cmd: "game_type 6; game_mode 0; changelevel" },
             ],
             "Cheats": [
                 { id: 1, args: false, default: "", name: "Cheat On", cmd: "sv_cheats 1" },
