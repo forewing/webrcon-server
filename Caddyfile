@@ -1,6 +1,6 @@
-0.0.0.0:27020 {
+0.0.0.0:27022 {
     root /var/www/public
-    proxy /api http://server:27020
+    proxy /api http://server:27022
 
     log stdout
 }

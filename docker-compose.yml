@@ -7,14 +7,14 @@ services:
       - ./Caddyfile:/etc/Caddyfile
       - ./client/public:/var/www/public
     ports:
-      - "27020:27020"
+      - "27022:27022"
     links:
       - server
     restart: always
 
   server:
     build: .
-    command: gunicorn -b 0.0.0.0:27020 -w4 main:app --access-logfile - --error-logfile -
+    command: gunicorn -b 0.0.0.0:27022 -w4 main:app --access-logfile - --error-logfile -
     volumes:
       - ./server:/srv/django
     restart: always
