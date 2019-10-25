@@ -68,6 +68,7 @@ var app = new Vue({
                 { id: 1, args: true, default: "5", name: "Restart Game", cmd: "mp_restartgame" },
                 { id: 2, args: true, default: "30", name: "Max Rounds", cmd: "mp_maxrounds" },
                 { id: 3, args: true, default: "999", name: "Warmup Time", cmd: "mp_warmuptime" },
+                { id: 4, args: false, default: "", name: "Infinite Time", cmd: "mp_roundtime_defuse 60; mp_roundtime_hostage 60; mp_roundtime 60;mp_restartgame 1" },
             ],
             "Maps": [
                 { id: 1, args: true, default: "*", name: "List Maps", cmd: "maps" },
