@@ -31,8 +31,8 @@ var (
 		Config: flag.String("conf", "", "load configs from `file` instead of flags."),
 
 		Bind:              flag.String("bind", "0.0.0.0:8080", "webrcon-server bind `address`"),
-		BasicAuthUsername: flag.String("admin-name", "", "basicauth `username` for path ./api/cmd"),
-		BasicAuthPassword: flag.String("admin-pass", "", "basicauth `password` for path ./api/cmd"),
+		BasicAuthUsername: flag.String("admin-name", "", "basicauth `username` for path /api/exec"),
+		BasicAuthPassword: flag.String("admin-pass", "", "basicauth `password` for path /api/exec"),
 	}
 )
 
