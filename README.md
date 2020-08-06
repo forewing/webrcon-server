@@ -4,16 +4,6 @@ A web based control panel for srcds' RCON protocol (CS:GO).
 
 ![preview](preview.png)
 
-## Deployment
-
-1. `cp server/config.py.example server/config.py`
-
-    Then edit ip, port, password to your own server's.
-
-1. `docker-compose up -d`
-
-Now it will listen on `localhost:27022` .
-
 ## Usage
 
 ### API
@@ -21,26 +11,26 @@ Now it will listen on `localhost:27022` .
 1. exec
 
     ```
-    curl -X POST 127.0.0.1:27022/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
+    curl -X POST 127.0.0.1:8080/api/exec -H "Content-Type: application/json" -d '{"cmd":"YOUR_CMD_HERE"}'
     ```
 
     or
 
     ```
-    curl -v -X GET '127.0.0.1:27022/api/exec?cmd=YOUR_CMD_HERE'
+    curl -v -X GET '127.0.0.1:8080/api/exec?cmd=YOUR_CMD_HERE'
     ```
 
 2. connect
 
-    Visit `127.0.0.1:27022/api/connect`, you will be 301 redired to steam game launching shortcut.
+    Visit `127.0.0.1:8080/api/connect`, you will be 301 redired to steam game launching shortcut.
 
 ### GUI
 
-Browse to `http://127.0.0.1:27022/`
+Browse to `http://127.0.0.1:8080/`
 
 Please help us to add more command shortcut.
 
-In client/public/static/main.js, edit the object
+In resources/main.js, edit the object
 
 ```
 shortcutGroups: {

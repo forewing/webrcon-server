@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=yes">
+    <link rel="icon" type="image/x-icon" href='./favicon.ico' />
+    <title>WebRCON</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-iconic@1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="header fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+                <div class="container">
+                    <a class="navbar-brand" href=".">
+                        <img src="./favicon.ico" style="height: 30px;" class="mr-2">
+                        <span>WebRcon</span>
+                    </a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto justify-content-end">
+                            <li class="nav-item text-muted">
+                                <a class="nav-link" href="./api/connect">
+                                    <span class="oi oi-external-link" title="external-link" aria-hidden="true"></span>
+                                    Connect
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container mt-4">
+
+            <div class="row">
+                <div class="col col-xl-10 px-2 mx-auto">
+
+                    <div class="card mb-3">
+                        <div class="card-header bg-turqgreen">
+                            <h3 class="card-title my-auto">
+                                <span class="oi oi-terminal" title="terminal" aria-hidden="true"></span> Control Panel
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-success" type="button" id="button-exec"
+                                        v-on:click="sendExecPanel(command)">Exec</button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="You Command Here."
+                                    aria-label="Command to be executed." aria-describedby="button-exec"
+                                    v-model="command">
+                            </div>
+                            <textarea class="form-control" placeholder="Server's reply here." rows="5"
+                                v-model="reply"></textarea>
+                        </div>
+                    </div>
+
+                    <shortcut-group v-for="(shortcuts, name) in shortcutGroups" v-bind:key="name"
+                        v-bind:shortcuts="shortcuts" v-bind:name="name" v-on:send-cmd="sendExecPanel">
+                    </shortcut-group>
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer bg-light shadow" style="padding: 1rem; text-align: center;">
+            <div class="container mb-0">
+                <a href="https://github.com/forewing/csgo-rcon" class="text-dark">&copy; 2020 - forewing</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="text/x-template" id="shortcut-group">
+        <div class="card bg-light mb-3">
+            <div class="card-header bg-middleblue">
+                <h4 class="card-title my-auto">
+                    <span class="oi oi-puzzle-piece" title="puzzle-piece" aria-hidden="true"></span> {{ name }}
+                </h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <shortcut-panel
+                v-for="shortcut in shortcuts"
+                v-bind:key="shortcut.id"
+                v-bind:shortcut="shortcut"
+                v-on:send-cmd="emitExec">
+                </shortcut-panel>
+            </ul>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="shortcut">
+        <li class="list-group-item">
+            <button type="button" class="btn btn-outline-info btn-block"
+                v-if="!shortcut.args" v-on:click="emitExec"
+            >{{ shortcut.name }}</button>
+            <div class="input-group" v-if="shortcut.args">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-info" type="button" id="button-submit"
+                        v-on:click="emitExec">{{ shortcut.name }}</button>
+                </div>
+                <input type="text" class="form-control" placeholder="Command Args Here."
+                    aria-label="Command Args to be passed." aria-describedby="button-submit"
+                    v-model="args">
+            </div>
+        </li>
+    </script>
+
+
+
+    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

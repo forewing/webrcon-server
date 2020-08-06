@@ -1,6 +1,18 @@
-FROM python:3
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /srv/django
-WORKDIR /srv/django
-COPY requirements.txt /srv/django/
-RUN python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+FROM golang:1.14-alpine AS builder
+RUN apk add --no-cache \
+    git
+
+WORKDIR /build
+COPY . /build/
+RUN ./build.sh
+
+
+FROM alpine:3
+RUN apk add --no-cache \
+    dumb-init
+
+WORKDIR /app
+COPY --from=builder /build/output /app/
+
+EXPOSE 8080
+ENTRYPOINT [ "dumb-init", "--", "/app/webrcon-server" ]
