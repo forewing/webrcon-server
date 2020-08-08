@@ -73,7 +73,7 @@ var app = new Vue({
     },
     methods: {
         sendExec: function (succ, fail, cmd) {
-            fetch(`./api/exec?cmd=${cmd}`)
+            fetch(`./api/exec?cmd=${encodeURIComponent(cmd)}`)
                 .then(function (res) {
                     if (res.status !== 200) {
                         fail('Fail with Status Code: ' + res.status);
