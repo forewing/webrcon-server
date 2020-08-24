@@ -16,6 +16,7 @@ var (
 	client *rcon.Client
 )
 
+//go:generate go run generate/main.go
 func main() {
 	conf, err := json.MarshalIndent(flags, "", "  ")
 	if err != nil {
