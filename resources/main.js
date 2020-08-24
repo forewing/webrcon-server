@@ -63,6 +63,11 @@ var app = new Vue({
                 { id: 4, args: true, default: "de_dust2", name: "Demolition", cmd: "game_mode 1; game_type 1; changelevel" },
                 { id: 5, args: true, default: "de_dust2", name: "Deathmatch", cmd: "game_mode 2; game_type 1; changelevel" },
                 { id: 6, args: true, default: "dz_sirocco", name: "Dangerzone", cmd: "game_type 6; game_mode 0; changelevel" },
+                { id: 7, args: true, default: "de_inferno", name: "Wingman", cmd: "game_type 0; game_mode 2; changelevel" },
+            ],
+            "Training": [
+                { id: 1, args: false, default: "", name: "Training On", cmd: "sv_cheats 1; ammo_grenade_limit_total 6; bot_kick; sv_infinite_ammo 1; cl_grenadepreview 1; sv_grenade_trajectory 1; mp_startmoney 16000; sv_showimpacts 2; mp_roundtime_defuse 60; mp_freezetime 0; mp_buy_anywhere 1; mp_buytime 9999; mp_restartgame 1" },
+                { id: 2, args: false, default: "", name: "Training Off", cmd: "sv_cheats 0; ammo_grenade_limit_total 4; sv_infinite_ammo 0; cl_grenadepreview 0; sv_grenade_trajectory 0; sv_showimpacts 0; mp_buy_anywhere 0; mp_restartgame 1" },
             ],
             "Cheats": [
                 { id: 1, args: false, default: "", name: "Cheat On", cmd: "sv_cheats 1" },
