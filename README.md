@@ -42,7 +42,7 @@ Usage of webrcon-server:
 
 2. connect
 
-    Visit `127.0.0.1:8080/api/connect`, you will be 301 redired to steam game launching shortcut.
+    Visit `127.0.0.1:8080/api/connect`, you will be 307 redired to steam game launching shortcut.
 
 ### GUI
 
