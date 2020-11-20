@@ -68,6 +68,7 @@ var app = new Vue({
             "Training": [
                 { id: 1, args: false, default: "", name: "Training On", cmd: "sv_cheats 1; ammo_grenade_limit_total 6; bot_kick; sv_infinite_ammo 1; cl_grenadepreview 1; sv_grenade_trajectory 1; mp_startmoney 16000; sv_showimpacts 2; mp_roundtime_defuse 60; mp_freezetime 0; mp_buy_anywhere 1; mp_buytime 9999; mp_restartgame 1" },
                 { id: 2, args: false, default: "", name: "Training Off", cmd: "sv_cheats 0; ammo_grenade_limit_total 4; sv_infinite_ammo 0; cl_grenadepreview 0; sv_grenade_trajectory 0; sv_showimpacts 0; mp_buy_anywhere 0; mp_restartgame 1" },
+                { id: 3, args: false, default: "", name: "DDQ", cmd: "sv_alltalk 1; sv_deadtalk 1; mp_teammates_are_enemies 1" },
             ],
             "Cheats": [
                 { id: 1, args: false, default: "", name: "Cheat On", cmd: "sv_cheats 1" },
