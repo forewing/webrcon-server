@@ -90,12 +90,15 @@ func exec(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	log.Println("cmd: ", cmd)
 	message, err := client.Execute(cmd)
 	message = strings.TrimSpace(message)
 
 	fmt.Fprintln(w, message)
+	log.Println("msg: ", message)
 	if err != nil {
 		fmt.Fprintln(w, err)
+		log.Println("err: ", err)
 	}
 }
 
