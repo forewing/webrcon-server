@@ -79,14 +79,22 @@ var app = new Vue({
     },
     methods: {
         sendExec: function (succ, fail, cmd) {
-            fetch(`./api/exec?cmd=${encodeURIComponent(cmd)}`)
-                .then(function (res) {
-                    if (res.status !== 200) {
-                        fail('Fail with Status Code: ' + res.status);
-                    } else {
-                        res.text().then(succ);
-                    }
-                })
+            fetch(
+                `./api/exec`, {
+                body: JSON.stringify({
+                    'cmd': cmd,
+                }),
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+            }).then(function (res) {
+                if (res.status !== 200) {
+                    fail('Fail with Status Code: ' + res.status);
+                } else {
+                    res.text().then(succ);
+                }
+            })
                 .catch(err => console.log('Fetch Error :-S', err));
         },
         sendExecPanel: function (cmd) {
