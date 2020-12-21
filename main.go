@@ -30,6 +30,7 @@ func main() {
 
 	http.Handle("/", http.FileServer(AssetFile()))
 
+	log.Println("Listening on", "http://" + *flags.Bind)
 	http.ListenAndServe(*flags.Bind, logger(http.DefaultServeMux))
 }
 
