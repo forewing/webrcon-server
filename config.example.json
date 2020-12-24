@@ -5,5 +5,5 @@
     "Bind": "0.0.0.0:8080",
     "BasicAuthUsername": "admin",
     "BasicAuthPassword": "password",
-    "BasicAuthDisabled": false
+    "Debug": false
 }
