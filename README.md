@@ -11,7 +11,7 @@ A web based control panel for srcds' RCON protocol (CS:GO).
 ```
 Usage of webrcon-server:
   -addr address
-        address of the server RCON, in the format of HOST:PORT. (default "127.0.0.1:27015")
+        address of the server RCON, in the format of HOST:PORT (default "127.0.0.1:27015")
   -admin-name username
         basicauth username for path /api/exec
   -admin-pass password
@@ -19,11 +19,13 @@ Usage of webrcon-server:
   -bind address
         webrcon-server bind address (default "0.0.0.0:8080")
   -conf file
-        load configs from file instead of flags.
+        load configs from file instead of flags
+  -debug
+        turn on debug mode
   -pass password
-        password of the RCON.
+        password of the RCON
   -timeout timeout
-        timeout of the connection (seconds). (default 1)
+        timeout(seconds) of the connection (default 1)
 ```
 
 ### API
@@ -50,7 +52,7 @@ Browse to `http://127.0.0.1:8080/`
 
 Please help us to add more command shortcut.
 
-In resources/main.js, edit the object
+In statics/main.js, edit the object
 
 ```
 shortcutGroups: {
