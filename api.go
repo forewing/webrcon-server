@@ -4,9 +4,17 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+)
+
+var (
+	ipFilter = regexp.MustCompile(
+		`rcon from \"[0-9.:]+\":`,
+	)
+	ipFilterReplace = "rcon from \"***\":"
 )
 
 func getConnect(c *gin.Context) {
@@ -58,6 +66,8 @@ func exec(cmd string) (string, error) {
 	if err != nil {
 		log.Println("err: ", err)
 	}
+
+	msg = ipFilter.ReplaceAllString(msg, ipFilterReplace)
 
 	return msg, err
 }
