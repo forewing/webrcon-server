@@ -1,0 +1,83 @@
+{
+    "World": [
+        {
+            "id": 1,
+            "args": true,
+            "default": "survival @a",
+            "name": "Set Gamemode",
+            "cmd": "gamemode"
+        },
+        {
+            "id": 2,
+            "args": true,
+            "default": "normal",
+            "name": "Set Difficulty",
+            "cmd": "difficulty"
+        },
+        {
+            "id": 3,
+            "args": true,
+            "default": "set day",
+            "name": "Time",
+            "cmd": "time"
+        },
+        {
+            "id": 4,
+            "args": true,
+            "default": "clear",
+            "name": "Set Weather",
+            "cmd": "weather"
+        },
+        {
+            "id": 5,
+            "args": true,
+            "default": "hello",
+            "name": "Global Message",
+            "cmd": "say"
+        }
+    ],
+    "Player": [
+        {
+            "id": 0,
+            "args": false,
+            "default": "",
+            "name": "List Players",
+            "cmd": "list"
+        },
+        {
+            "id": 1,
+            "args": true,
+            "default": "",
+            "name": "Give <target> <item> [count]",
+            "cmd": "give"
+        },
+        {
+            "id": 2,
+            "args": true,
+            "default": "",
+            "name": "Teleport <target> <dest>",
+            "cmd": "tp"
+        },
+        {
+            "id": 3,
+            "args": true,
+            "default": "@a hello",
+            "name": "Private message",
+            "cmd": "tell"
+        },
+        {
+            "id": 4,
+            "args": true,
+            "default": "",
+            "name": "Kill <target>",
+            "cmd": "kill"
+        },
+        {
+            "id": 5,
+            "args": true,
+            "default": "",
+            "name": "Kick <player>",
+            "cmd": "kick"
+        }
+    ]
+}
