@@ -4,13 +4,13 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"webrcon-server/statics"
+	"webrcon-server/presets"
 
 	"github.com/gin-gonic/gin"
 )
 
 const (
-	defaultPresetPath = "preset-csgo-default.json"
+	defaultPresetPath = "csgo-default.json"
 )
 
 var (
@@ -19,15 +19,20 @@ var (
 
 func loadPreset() {
 	if len(*flags.Preset) > 0 {
-		if preset, err := ioutil.ReadFile(*flags.Preset); err == nil {
+		if preset, err := presets.Asset(*flags.Preset); err == nil {
 			savedPreset = preset
 			log.Println("Use preset", *flags.Preset, ":", string(preset))
 			return
 		}
-		log.Println("Error: load preset", *flags.Preset, "failed, try default preset")
+		if preset, err := ioutil.ReadFile(*flags.Preset); err == nil {
+			savedPreset = preset
+			log.Println("Use custom preset", *flags.Preset, ":", string(preset))
+			return
+		}
+		log.Println("Error: load config preset", *flags.Preset, "failed, try default preset")
 	}
 
-	if preset, err := statics.Asset(defaultPresetPath); err == nil {
+	if preset, err := presets.Asset(defaultPresetPath); err == nil {
 		savedPreset = preset
 		log.Println("Use default preset:", string(preset))
 	} else {

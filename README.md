@@ -4,8 +4,6 @@ A web based control panel for srcds' RCON protocol (CS:GO, Minecraft, etc.).
 
 ![preview](preview.png)
 
-## Usage
-
 ## Flags
 
 ```
@@ -54,9 +52,13 @@ Browse to `http://127.0.0.1:8080/`
 
 ## Shortcut group preset
 
-- By default (`preset` config is empty), the server will use `statics/preset-csgo-default.json`.
+Welcome to add presets for more games!
 
-- You may use your custom preset by setting `preset` to corresponding path.
+- By default (`preset` config is empty), the server will use `presets/csgo-default.json`.
+
+- You may use other preset listed in `presets/` by setting `preset` to corresponding file name.
+
+- If the file name set by `preset` cannot be found in `presets/`, the server will consider it as a path to your custom preset, and load it.
 
 - The preset must be a valid json and follow the style:
 

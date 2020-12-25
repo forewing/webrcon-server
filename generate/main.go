@@ -18,6 +18,7 @@ const (
 func main() {
 	generate("./statics")
 	generate("./templates")
+	generate("./presets")
 }
 
 func generate(path string) {
