@@ -24,11 +24,13 @@ Usage of webrcon-server:
         turn on debug mode
   -pass password
         password of the RCON
+  -preset preset
+        use preset(path), empty for default csgo config
   -timeout timeout
         timeout(seconds) of the connection (default 1)
 ```
 
-### API
+## API
 
 1. exec
 
@@ -46,16 +48,20 @@ Usage of webrcon-server:
 
     Visit `127.0.0.1:8080/api/connect`, you will be 307 redired to steam game launching shortcut.
 
-### GUI
+## GUI
 
 Browse to `http://127.0.0.1:8080/`
 
-Please help us to add more command shortcut.
+## Shortcut group preset
 
-In statics/main.js, edit the object
+- By default (`preset` config is empty), the server will use `statics/preset-csgo-default.json`.
+
+- You may use your custom preset by setting `preset` to corresponding path.
+
+- The preset must be a valid json and follow the style:
 
 ```
-shortcutGroups: {
+{
     "Rounds": [
         { id: 1, args: true, default: "5", name: "restart", cmd: "mp_restartgame" },
         { id: 2, args: true, default: "30", name: "maxrounds", cmd: "mp_maxrounds" },

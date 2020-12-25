@@ -24,6 +24,8 @@ func main() {
 	log.Println(string(conf))
 	client = rcon.New(*flags.Address, *flags.Password, time.Duration(*flags.Timeout*float64(time.Second)))
 
+	loadPreset()
+
 	if !*flags.Debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
@@ -34,6 +36,8 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.FileFromFS("./main.html", templates.AssetFile())
 	})
+
+	router.GET("/preset.json", getPreset)
 
 	router.GET("/api/connect", getConnect)
 

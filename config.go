@@ -14,6 +14,7 @@ type Flags struct {
 	Password *string  `json:",omitempty"`
 	Timeout  *float64 `json:",omitempty"`
 
+	Preset *string `json:",omitempty"`
 	Config *string `json:",omitempty"`
 
 	Bind              *string `json:",omitempty"`
@@ -29,6 +30,7 @@ var (
 		Password: flag.String("pass", rcon.DefaultPassword, "`password` of the RCON"),
 		Timeout:  flag.Float64("timeout", rcon.DefaultTimeout.Seconds(), "`timeout`(seconds) of the connection"),
 
+		Preset: flag.String("preset", "", "use `preset`(path), empty for default csgo config"),
 		Config: flag.String("conf", "", "load configs from `file` instead of flags"),
 
 		Bind:              flag.String("bind", "0.0.0.0:8080", "webrcon-server bind `address`"),
