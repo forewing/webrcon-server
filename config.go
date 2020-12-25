@@ -17,6 +17,8 @@ type Flags struct {
 	Preset *string `json:",omitempty"`
 	Config *string `json:",omitempty"`
 
+	PublicAddress *string `json:",omitempty"`
+
 	Bind              *string `json:",omitempty"`
 	BasicAuthUsername *string `json:",omitempty"`
 	BasicAuthPassword *string `json:",omitempty"`
@@ -32,6 +34,8 @@ var (
 
 		Preset: flag.String("preset", "", "use `preset`(path), empty for default csgo config"),
 		Config: flag.String("conf", "", "load configs from `file` instead of flags"),
+
+		PublicAddress: flag.String("public-addr", "", "redirect target(public `address`) for /api/connect, empty for disabled"),
 
 		Bind:              flag.String("bind", "0.0.0.0:8080", "webrcon-server bind `address`"),
 		BasicAuthUsername: flag.String("admin-name", "", "basicauth `username` for path /api/exec"),

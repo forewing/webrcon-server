@@ -24,6 +24,8 @@ Usage of webrcon-server:
         password of the RCON
   -preset preset
         use preset(path), empty for default csgo config
+  -public-addr address
+        redirect target(public address) for /api/connect, empty for disabled
   -timeout timeout
         timeout(seconds) of the connection (default 1)
 ```
@@ -44,7 +46,7 @@ Usage of webrcon-server:
 
 2. connect
 
-    Visit `127.0.0.1:8080/api/connect`, you will be 307 redired to steam game launching shortcut.
+    Visit `127.0.0.1:8080/api/connect`, you will be 307 redired to steam game launching shortcut if `public-addr` set to `steam://connect/SERVER_ADDRESS:PORT`.
 
 ## GUI
 

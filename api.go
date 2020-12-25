@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"regexp"
@@ -18,7 +17,11 @@ var (
 )
 
 func getConnect(c *gin.Context) {
-	c.Redirect(http.StatusTemporaryRedirect, fmt.Sprintf("steam://connect/%v", *flags.Address))
+	if len(*flags.PublicAddress) > 0 {
+		c.Redirect(http.StatusTemporaryRedirect, *flags.PublicAddress)
+		return
+	}
+	c.String(http.StatusOK, "\"/api/connect\" disabled")
 }
 
 func getExec(c *gin.Context) {
