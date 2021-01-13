@@ -51,5 +51,5 @@ func main() {
 	routerExec.POST("/", postExec)
 
 	log.Println("Listening on", "http://"+*flags.Bind)
-	router.Run(*flags.Bind)
+	log.Fatalln(router.Run(*flags.Bind))
 }
