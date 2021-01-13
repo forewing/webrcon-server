@@ -22,14 +22,14 @@ func main() {
 	log.Println(string(conf))
 	client = rcon.New(*flags.Address, *flags.Password, time.Duration(*flags.Timeout*float64(time.Second)))
 
-	loadPreset()
-
 	if *flags.Debug {
 		// Live reload templates & statics for debug
 		useLiveReload()
 	} else {
 		gin.SetMode(gin.ReleaseMode)
 	}
+	checkPreset()
+
 	router := gin.Default()
 
 	router.StaticFS("/statics", http.FS(statics))

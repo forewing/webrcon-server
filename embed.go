@@ -10,6 +10,7 @@ import (
 const (
 	staticsPath   = "statics"
 	templatesPath = "templates"
+	presetsPath   = "presets"
 )
 
 var (
@@ -22,7 +23,8 @@ var (
 	templates      fs.FS
 
 	//go:embed presets/*
-	presets embed.FS
+	presetsEmbed embed.FS
+	presets      fs.FS
 )
 
 func mustStripFSPrefix(sfs fs.FS, prefix string) fs.FS {
@@ -36,6 +38,7 @@ func mustStripFSPrefix(sfs fs.FS, prefix string) fs.FS {
 func init() {
 	statics = mustStripFSPrefix(staticsEmbed, staticsPath)
 	templates = mustStripFSPrefix(templatesEmbed, templatesPath)
+	presets = mustStripFSPrefix(presetsEmbed, presetsPath)
 }
 
 func dirExist(path string) bool {
@@ -55,5 +58,9 @@ func useLiveReload() {
 	if dirExist(templatesPath) {
 		log.Println("live reload ./templates/*")
 		templates = os.DirFS(templatesPath)
+	}
+	if dirExist(presetsPath) {
+		log.Println("live reload ./presets/*")
+		presets = os.DirFS(presetsPath)
 	}
 }
