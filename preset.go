@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"webrcon-server/presets"
+	"path"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,9 +17,13 @@ var (
 	savedPreset = []byte("{}")
 )
 
+func getPresetPath(name string) string {
+	return path.Join("presets", name)
+}
+
 func loadPreset() {
 	if len(*flags.Preset) > 0 {
-		if preset, err := presets.Asset(*flags.Preset); err == nil {
+		if preset, err := presets.ReadFile(getPresetPath(*flags.Preset)); err == nil {
 			savedPreset = preset
 			log.Println("Use preset", *flags.Preset, ":", string(preset))
 			return
@@ -32,7 +36,7 @@ func loadPreset() {
 		log.Println("Error: load config preset", *flags.Preset, "failed, try default preset")
 	}
 
-	if preset, err := presets.Asset(defaultPresetPath); err == nil {
+	if preset, err := presets.ReadFile(getPresetPath(defaultPresetPath)); err == nil {
 		savedPreset = preset
 		log.Println("Use default preset:", string(preset))
 	} else {

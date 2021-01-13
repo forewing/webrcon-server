@@ -3,9 +3,8 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"net/http"
 	"time"
-	"webrcon-server/statics"
-	"webrcon-server/templates"
 
 	rcon "github.com/forewing/csgo-rcon"
 	"github.com/gin-gonic/gin"
@@ -15,7 +14,6 @@ var (
 	client *rcon.Client
 )
 
-//go:generate go run generate/main.go
 func main() {
 	conf, err := json.MarshalIndent(flags, "", "  ")
 	if err != nil {
@@ -31,10 +29,10 @@ func main() {
 	}
 	router := gin.Default()
 
-	router.StaticFS("/statics", statics.AssetFile())
+	router.StaticFS("/statics", http.FS(statics))
 
 	router.GET("/", func(c *gin.Context) {
-		c.FileFromFS("./main.html", templates.AssetFile())
+		c.FileFromFS("./main.html", http.FS(templates))
 	})
 
 	router.GET("/preset.json", getPreset)
