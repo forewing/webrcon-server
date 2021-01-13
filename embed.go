@@ -35,32 +35,25 @@ func mustStripFSPrefix(sfs fs.FS, prefix string) fs.FS {
 	return dfs
 }
 
-func init() {
+func prepareFS(debug bool) {
 	statics = mustStripFSPrefix(staticsEmbed, staticsPath)
 	templates = mustStripFSPrefix(templatesEmbed, templatesPath)
 	presets = mustStripFSPrefix(presetsEmbed, presetsPath)
+
+	if debug {
+		useLiveReload(&statics, staticsPath)
+		useLiveReload(&templates, templatesPath)
+		useLiveReload(&presets, presetsPath)
+	}
 }
 
-func dirExist(path string) bool {
+func useLiveReload(target *fs.FS, path string) {
 	if _, err := os.Stat(path); err != nil {
 		if os.IsNotExist(err) {
-			return false
+			// Cannot live reload
+			return
 		}
 	}
-	return true
-}
-
-func useLiveReload() {
-	if dirExist(staticsPath) {
-		log.Println("live reload ./statics/*")
-		statics = os.DirFS(staticsPath)
-	}
-	if dirExist(templatesPath) {
-		log.Println("live reload ./templates/*")
-		templates = os.DirFS(templatesPath)
-	}
-	if dirExist(presetsPath) {
-		log.Println("live reload ./presets/*")
-		presets = os.DirFS(presetsPath)
-	}
+	log.Printf("live reload ./%v/*", path)
+	*target = os.DirFS(path)
 }
