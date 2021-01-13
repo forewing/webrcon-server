@@ -3,7 +3,13 @@ package main
 import (
 	"embed"
 	"io/fs"
+	"log"
 	"os"
+)
+
+const (
+	staticsPath   = "statics"
+	templatesPath = "templates"
 )
 
 var (
@@ -28,11 +34,26 @@ func mustStripFSPrefix(sfs fs.FS, prefix string) fs.FS {
 }
 
 func init() {
-	statics = mustStripFSPrefix(staticsEmbed, "statics")
-	templates = mustStripFSPrefix(templatesEmbed, "templates")
+	statics = mustStripFSPrefix(staticsEmbed, staticsPath)
+	templates = mustStripFSPrefix(templatesEmbed, templatesPath)
+}
+
+func dirExist(path string) bool {
+	if _, err := os.Stat(path); err != nil {
+		if os.IsNotExist(err) {
+			return false
+		}
+	}
+	return true
 }
 
 func useLiveReload() {
-	statics = os.DirFS("statics")
-	templates = os.DirFS("templates")
+	if dirExist(staticsPath) {
+		log.Println("live reload ./statics/*")
+		statics = os.DirFS(staticsPath)
+	}
+	if dirExist(templatesPath) {
+		log.Println("live reload ./templates/*")
+		templates = os.DirFS(templatesPath)
+	}
 }
