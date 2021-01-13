@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"io/fs"
+	"os"
 )
 
 var (
@@ -29,4 +30,9 @@ func mustStripFSPrefix(sfs fs.FS, prefix string) fs.FS {
 func init() {
 	statics = mustStripFSPrefix(staticsEmbed, "statics")
 	templates = mustStripFSPrefix(templatesEmbed, "templates")
+}
+
+func useLiveReload() {
+	statics = os.DirFS("statics")
+	templates = os.DirFS("templates")
 }

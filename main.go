@@ -24,7 +24,10 @@ func main() {
 
 	loadPreset()
 
-	if !*flags.Debug {
+	if *flags.Debug {
+		// Live reload templates & statics for debug
+		useLiveReload()
+	} else {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	router := gin.Default()
