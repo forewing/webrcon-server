@@ -16,6 +16,10 @@ An example of webrcon + csgo compose file is at [example/docker-compose-csgo.yml
 
 Note that the server address should be configured to game server's service name with port, in the example, it should be `csgo:27015`
 
+### Pre-Built Binary
+
+Download it from [GitHub Action CI](https://github.com/forewing/webrcon-server/actions?query=workflow%3ACI+is%3Asuccess), latest successful build is recommended
+
 ### Build From Source
 
 > Require go 1.16+
