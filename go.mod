@@ -1,4 +1,4 @@
-module webrcon-server
+module github.com/forewing/webrcon-server
 
 go 1.16
 
