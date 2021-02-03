@@ -6,5 +6,5 @@ mkdir -p output
 export GO111MODULE=on
 
 # Build server
-go build -ldflags "-s -w"
+CGO_ENABLED=0 go build -ldflags "-s -w"
 mv webrcon-server output/
