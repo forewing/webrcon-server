@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"html/template"
 	"log"
 	"net/http"
 	"time"
@@ -31,11 +32,13 @@ func main() {
 
 	router := gin.Default()
 
-	router.StaticFS("/statics", http.FS(statics))
-
+	// Set HTML handler
+	router.SetHTMLTemplate(mustLoadTemplate())
 	router.GET("/", func(c *gin.Context) {
-		c.FileFromFS("./main.html", http.FS(templates))
+		c.HTML(http.StatusOK, "index.html", gin.H{})
 	})
+
+	router.StaticFS("/statics", http.FS(statics))
 
 	router.GET("/preset.json", getPreset)
 
@@ -52,4 +55,12 @@ func main() {
 
 	log.Println("Listening on", "http://"+*flags.Bind)
 	router.Run(*flags.Bind)
+}
+
+func mustLoadTemplate() *template.Template {
+	t, err := template.New("").Delims("[[", "]]").ParseFS(templates, "*.html")
+	if err != nil {
+		log.Panicln(err)
+	}
+	return t
 }
