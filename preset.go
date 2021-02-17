@@ -1,10 +1,9 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"net/http"
-	"webrcon-server/presets"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,32 +13,42 @@ const (
 )
 
 var (
-	savedPreset = []byte("{}")
+	// path of the preset file to be served
+	usePresetPath = defaultPresetPath
+	// load from fs.FS if true, from disk otherwise
+	usePresetEmbedFS = true
 )
 
-func loadPreset() {
+func checkPreset() {
 	if len(*flags.Preset) > 0 {
-		if preset, err := presets.Asset(*flags.Preset); err == nil {
-			savedPreset = preset
-			log.Println("Use preset", *flags.Preset, ":", string(preset))
+		if _, err := presets.Open(*flags.Preset); err == nil {
+			usePresetPath = *flags.Preset
+			usePresetEmbedFS = true
+			log.Println("Use built-in preset", usePresetPath)
 			return
 		}
-		if preset, err := ioutil.ReadFile(*flags.Preset); err == nil {
-			savedPreset = preset
-			log.Println("Use custom preset", *flags.Preset, ":", string(preset))
+		if _, err := os.Open(*flags.Preset); err == nil {
+			usePresetPath = *flags.Preset
+			usePresetEmbedFS = false
+			log.Println("Use custom preset", *flags.Preset)
 			return
 		}
 		log.Println("Error: load config preset", *flags.Preset, "failed, try default preset")
 	}
 
-	if preset, err := presets.Asset(defaultPresetPath); err == nil {
-		savedPreset = preset
-		log.Println("Use default preset:", string(preset))
+	if _, err := presets.Open(defaultPresetPath); err == nil {
+		usePresetPath = defaultPresetPath
+		usePresetEmbedFS = true
+		log.Println("Use default built-in preset", defaultPresetPath)
 	} else {
-		panic("Load default preset failed: " + err.Error())
+		panic("Load default built-in preset failed: " + err.Error())
 	}
 }
 
 func getPreset(c *gin.Context) {
-	c.Data(http.StatusOK, gin.MIMEJSON, savedPreset)
+	if usePresetEmbedFS {
+		c.FileFromFS(usePresetPath, http.FS(presets))
+		return
+	}
+	c.File(usePresetPath)
 }

@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  csgo:
+    image: crazymax/csgo-server-launcher:latest
+    ports:
+      - "27015:27015/udp"
+      - "27015:27015"
+    ## other configs...
+
+  rcon:
+    image: forewing/webrcon-server
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+
+    ## `csgo` is the game server's service name
+    command: "-addr csgo:27015"
+
+    ## if you prefer using config file, comment out previous `command:` line,
+    ## create config.json and uncomment next few lines
+
+    # command: "-conf /app/config.json"
+    # volumes:
+      # - ./config.json:/app/config.json
+
+

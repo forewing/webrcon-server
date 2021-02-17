@@ -4,7 +4,42 @@ A web based control panel for srcds' RCON protocol (CS:GO, Minecraft, etc.).
 
 ![preview](preview.png)
 
-## Flags
+## Install
+
+### Docker
+
+You can get the docker image at [forewing/webrcon-server](https://hub.docker.com/r/forewing/webrcon-server)
+
+Using docker-compose is recommended, it makes connecting webrcon to game server easier
+
+An example of webrcon + csgo compose file is at [example/docker-compose-csgo.yml](example/docker-compose-csgo.yml)
+
+Note that the server address should be configured to game server's service name with port, in the example, it should be `csgo:27015`
+
+### Pre-Built Binary
+
+Download it from [GitHub Action CI](https://github.com/forewing/webrcon-server/actions?query=workflow%3ACI+is%3Asuccess), latest successful build is recommended
+
+### Build From Source
+
+> Require go 1.16+
+
+Using go install
+
+```
+go install github.com/forewing/webrcon-server
+```
+
+Or get the source code and build manually
+
+```
+git clone https://github.com/forewing/webrcon-server.git
+cd webrcon-server
+go build
+```
+
+## Config
+### Flags
 
 ```
 Usage of webrcon-server:
@@ -30,6 +65,11 @@ Usage of webrcon-server:
         timeout(seconds) of the connection (default 1)
 ```
 
+### File Config
+
+You should pass `-conf PATH/TO/config.json` flag in order to use file config
+
+An example config file is at [example/config.example.json](example/config.example.json)
 ## API
 
 1. exec

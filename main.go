@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"html/template"
 	"log"
+	"net/http"
 	"time"
-	"webrcon-server/statics"
-	"webrcon-server/templates"
 
 	rcon "github.com/forewing/csgo-rcon"
 	"github.com/gin-gonic/gin"
@@ -15,7 +15,6 @@ var (
 	client *rcon.Client
 )
 
-//go:generate go run generate/main.go
 func main() {
 	conf, err := json.MarshalIndent(flags, "", "  ")
 	if err != nil {
@@ -24,18 +23,22 @@ func main() {
 	log.Println(string(conf))
 	client = rcon.New(*flags.Address, *flags.Password, time.Duration(*flags.Timeout*float64(time.Second)))
 
-	loadPreset()
-
-	if !*flags.Debug {
+	prepareFS(*flags.Debug)
+	if *flags.Debug {
+	} else {
 		gin.SetMode(gin.ReleaseMode)
 	}
+	checkPreset()
+
 	router := gin.Default()
 
-	router.StaticFS("/statics", statics.AssetFile())
-
+	// Set HTML handler
+	router.SetHTMLTemplate(mustLoadTemplate())
 	router.GET("/", func(c *gin.Context) {
-		c.FileFromFS("./main.html", templates.AssetFile())
+		c.HTML(http.StatusOK, "index.html", gin.H{})
 	})
+
+	router.StaticFS("/statics", http.FS(statics))
 
 	router.GET("/preset.json", getPreset)
 
@@ -52,4 +55,12 @@ func main() {
 
 	log.Println("Listening on", "http://"+*flags.Bind)
 	log.Fatalln(router.Run(*flags.Bind))
+}
+
+func mustLoadTemplate() *template.Template {
+	t, err := template.New("").Delims("[[", "]]").ParseFS(templates, "*.html")
+	if err != nil {
+		log.Panicln(err)
+	}
+	return t
 }

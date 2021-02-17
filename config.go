@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"flag"
-	"io/ioutil"
+	"os"
 
 	rcon "github.com/forewing/csgo-rcon"
 )
@@ -50,7 +50,7 @@ func init() {
 	if len(*flags.Config) == 0 {
 		return
 	}
-	data, err := ioutil.ReadFile(*flags.Config)
+	data, err := os.ReadFile(*flags.Config)
 	if err != nil {
 		panic(err)
 	}
