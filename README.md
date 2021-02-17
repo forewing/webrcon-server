@@ -27,7 +27,7 @@ Download it from [GitHub Action CI](https://github.com/forewing/webrcon-server/a
 Using go install
 
 ```
-go install github.com/forewing/webrcon-server
+go install github.com/forewing/webrcon-server@latest
 ```
 
 Or get the source code and build manually
