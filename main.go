@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"html/template"
 	"log"
 	"net/http"
 	"time"
@@ -55,12 +54,4 @@ func main() {
 
 	log.Println("Listening on", "http://"+*flags.Bind)
 	log.Fatalln(router.Run(*flags.Bind))
-}
-
-func mustLoadTemplate() *template.Template {
-	t, err := template.New("").Delims("[[", "]]").ParseFS(templates, "*.html")
-	if err != nil {
-		log.Panicln(err)
-	}
-	return t
 }

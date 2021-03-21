@@ -63,6 +63,8 @@ Usage of webrcon-server:
         redirect target(public address) for /api/connect, empty for disabled
   -timeout timeout
         timeout(seconds) of the connection (default 1)
+  -version
+        display versions
 ```
 
 ### File Config
