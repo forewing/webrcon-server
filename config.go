@@ -6,6 +6,7 @@ import (
 	"os"
 
 	rcon "github.com/forewing/csgo-rcon"
+	"github.com/forewing/webrcon-server/version"
 )
 
 // Flags holds configs
@@ -43,10 +44,18 @@ var (
 
 		Debug: flag.Bool("debug", false, "turn on debug mode"),
 	}
+
+	flagVersion = flag.Bool("version", false, "display versions")
 )
 
 func init() {
 	flag.Parse()
+
+	if *flagVersion {
+		version.Display()
+		os.Exit(0)
+	}
+
 	if len(*flags.Config) == 0 {
 		return
 	}
