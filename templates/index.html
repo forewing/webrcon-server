@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=yes">
-    <link rel="icon" type="image/x-icon" href='./statics/favicon.ico' />
+    <link rel="icon" type="image/x-icon" href='[[ generateStaticURL "./statics/favicon.ico" ]]' />
     <title>WebRCON</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-iconic@1.1.1/font/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="./statics/main.css">
+    <link rel="stylesheet" href='[[ generateStaticURL "./statics/main.css" ]]'>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
 </head>
 
@@ -20,7 +20,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
                 <div class="container">
                     <a class="navbar-brand" href=".">
-                        <img src="./statics/favicon.ico" style="height: 30px;" class="mr-2">
+                        <img src='[[ generateStaticURL "./statics/favicon.ico" ]]' style="height: 30px;" class="mr-2">
                         <span>WebRcon</span>
                     </a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -123,7 +123,7 @@
 
 
 
-    <script src="./statics/main.js"></script>
+    <script src='[[ generateStaticURL "./statics/main.js" ]]'></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
