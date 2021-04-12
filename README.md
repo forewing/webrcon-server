@@ -18,7 +18,9 @@ Note that the server address should be configured to game server's service name 
 
 ### Pre-Built Binary
 
-Download it from [GitHub Action CI](https://github.com/forewing/webrcon-server/actions?query=workflow%3ACI+is%3Asuccess), latest successful build is recommended
+- (Recommended) Get stable version from [Latest Release](https://github.com/forewing/webrcon-server/releases/latest)
+
+- [GitHub Action CI](https://github.com/forewing/webrcon-server/actions?query=workflow%3ACI+is%3Asuccess)
 
 ### Build From Source
 
