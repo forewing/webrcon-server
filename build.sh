@@ -53,18 +53,11 @@ compress_zip(){
 }
 
 PLATFORMS=""
-PLATFORMS="$PLATFORMS aix/ppc64"
 PLATFORMS="$PLATFORMS darwin/amd64 darwin/arm64"
-PLATFORMS="$PLATFORMS dragonfly/amd64"
-PLATFORMS="$PLATFORMS freebsd/386 freebsd/amd64 freebsd/arm64"
-PLATFORMS="$PLATFORMS linux/386 linux/amd64 linux/arm64 linux/ppc64 linux/ppc64le linux/mips linux/mipsle linux/mips64le linux/riscv64 linux/s390x"
-PLATFORMS="$PLATFORMS netbsd/386 netbsd/amd64 netbsd/arm64"
-PLATFORMS="$PLATFORMS openbsd/386 openbsd/amd64 openbsd/arm64"
-PLATFORMS="$PLATFORMS plan9/386 plan9/amd64"
-PLATFORMS="$PLATFORMS solaris/amd64"
+PLATFORMS="$PLATFORMS linux/386 linux/amd64 linux/arm64"
 PLATFORMS="$PLATFORMS windows/386 windows/amd64"
 
-PLATFORMS_ARM="freebsd linux netbsd openbsd plan9 windows"
+PLATFORMS_ARM="linux windows"
 
 
 for PLATFORM in $PLATFORMS; do
