@@ -3,11 +3,14 @@
 rm -rf output
 mkdir -p output
 
+OUTPUT="webrcon-server"
+
 VERSION_PACKAGE="github.com/forewing/webrcon-server/version"
 LDFLAGS="-s -w"
 
 if GIT_TAG=$(git describe --tags); then
     LDFLAGS="$LDFLAGS -X '$VERSION_PACKAGE.Version=$GIT_TAG'"
+    OUTPUT="${OUTPUT}-${GIT_TAG}"
 fi
 
 if GIT_HASH=$(git rev-parse HEAD); then
@@ -63,7 +66,6 @@ PLATFORMS="$PLATFORMS windows/386 windows/amd64"
 
 PLATFORMS_ARM="freebsd linux netbsd openbsd plan9 windows"
 
-OUTPUT="webrcon-server"
 
 for PLATFORM in $PLATFORMS; do
     GOOS=${PLATFORM%/*}
