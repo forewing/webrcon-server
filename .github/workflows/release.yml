@@ -24,9 +24,16 @@ jobs:
       - name: Build
         run: |
           bash build.sh all
+
+      - name: Extract Metadata
+        id: extract
+        uses: forewing/git-metadata@v1
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          body: ${{ steps.extract.outputs.changes-formatted }}
+          name: Release ${{ steps.extract.outputs.tag-current }}
           files: |
             output/*.tar.gz
             output/*.zip
