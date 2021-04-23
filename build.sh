@@ -43,7 +43,7 @@ fi
 compress_tar_gz(){
     tar caf $1.tar.gz $1
     mv $1.tar.gz output/
-    rm ${BIN_FILENAME}
+    rm $1
 }
 
 compress_zip(){
