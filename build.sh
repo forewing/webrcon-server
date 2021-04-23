@@ -18,17 +18,6 @@ if GIT_HASH=$(git rev-parse HEAD); then
 fi
 
 # Build server
-BuildUnix(){
-    GOOS=$1 GOARCH=$2 CGO_ENABLED=0 go build -ldflags "$LDFLAGS"
-    tar caf output/webrcon-server_$1_$2.tar.gz webrcon-server
-    rm webrcon-server
-}
-
-BuildWindows(){
-    GOOS=windows GOARCH=$1 CGO_ENABLED=0 go build -ldflags "$LDFLAGS"
-    zip -r output/webrcon-server_windows_$1.zip webrcon-server.exe
-    rm webrcon-server.exe
-}
 
 CMD_BASE="CGO_ENABLED=0 go build -ldflags \"${LDFLAGS}\""
 
@@ -41,15 +30,15 @@ fi
 # Cross compile
 
 compress_tar_gz(){
-    tar caf $1.tar.gz $1
-    mv $1.tar.gz output/
-    rm $1
+    tar caf "${1}.tar.gz" "${1}"
+    mv "${1}.tar.gz" output/
+    rm "${1}"
 }
 
 compress_zip(){
-    zip -q -r $1.zip $1.exe
-    mv $1.zip output/
-    rm $1.exe
+    zip -q -r "${1}.zip" "${1}.exe"
+    mv "${1}.zip" output/
+    rm "${1}.exe"
 }
 
 PLATFORMS=""
@@ -76,9 +65,9 @@ for PLATFORM in $PLATFORMS; do
     eval $CMD
 
     if [ "${GOOS}" = "windows" ]; then
-        compress_zip ${BIN_FILENAME_ORINGIN}
+        compress_zip "${BIN_FILENAME_ORINGIN}"
     else
-        compress_tar_gz ${BIN_FILENAME}
+        compress_tar_gz "${BIN_FILENAME}"
     fi
 done
 
@@ -99,9 +88,9 @@ for GOOS in $PLATFORMS_ARM; do
         eval "${CMD}"
 
         if [ "${GOOS}" = "windows" ]; then
-            compress_zip ${BIN_FILENAME_ORINGIN}
+            compress_zip "${BIN_FILENAME_ORINGIN}"
         else
-            compress_tar_gz ${BIN_FILENAME}
+            compress_tar_gz "${BIN_FILENAME}"
         fi
     done
 done
