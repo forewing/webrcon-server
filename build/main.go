@@ -42,5 +42,8 @@ func main() {
 		target.Compress = gobuild.CompressAuto
 		target.Platforms = gobuild.PlatformCommon
 	}
-	target.Build()
+	err := target.Build()
+	if err != nil {
+		panic(err)
+	}
 }
