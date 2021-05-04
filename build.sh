@@ -19,7 +19,7 @@ fi
 
 # Build server
 
-CMD_BASE="CGO_ENABLED=0 go build -ldflags \"${LDFLAGS}\""
+CMD_BASE="CGO_ENABLED=0 go build -trimpath -ldflags \"${LDFLAGS}\""
 
 if [ ! -n "$1" ] || [ ! $1 = "all" ]; then
     eval ${CMD_BASE}

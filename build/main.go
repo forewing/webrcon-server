@@ -21,6 +21,7 @@ var (
 		OutputPath:  "./output",
 		CleanOutput: true,
 
+		ExtraFlags:   []string{"-trimpath"},
 		ExtraLdFlags: "-s -w",
 
 		VersionPath: module + "/version.Version",
