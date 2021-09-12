@@ -46,7 +46,7 @@ compress_zip(){
 PLATFORMS=""
 PLATFORMS="$PLATFORMS darwin/amd64 darwin/arm64"
 PLATFORMS="$PLATFORMS linux/386 linux/amd64 linux/arm64"
-PLATFORMS="$PLATFORMS windows/386 windows/amd64"
+PLATFORMS="$PLATFORMS windows/386 windows/amd64 windows/arm64"
 
 PLATFORMS_ARM="linux windows"
 
@@ -76,7 +76,7 @@ done
 for GOOS in $PLATFORMS_ARM; do
     GOARCH="arm"
     # build for each ARM version
-    for GOARM in 7 6 5; do
+    for GOARM in 7 6; do
         BIN_FILENAME="${OUTPUT}-${GOOS}-${GOARCH}${GOARM}"
         BIN_FILENAME_ORINGIN="${BIN_FILENAME}"
 
