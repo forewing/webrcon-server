@@ -3,8 +3,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/forewing/csgo-rcon v1.2.0 h1:m6n/0n/SxYukbVZigG0hmpvTqJDMuFocXyxhX7VPXmI=
 github.com/forewing/csgo-rcon v1.2.0/go.mod h1:E6Mo02QwOx2zqxd2EmKgLUlxxjRWAobC3P7nrkXb3rk=
-github.com/forewing/gobuild v0.3.0 h1:F1hxibUPFrjMALAIbrvIyd7IS5/L8iKL/BRkiF8srmE=
-github.com/forewing/gobuild v0.3.0/go.mod h1:pZMq10dwLYO0OHm/+y9Tr/MyCM9a1fzQzaS/e0qDvLU=
+github.com/forewing/gobuild v0.4.0 h1:Rp+c7hU+5OjhJJ4cQ3NJk0yCIIFVQh1rd5K0y/FX4kE=
+github.com/forewing/gobuild v0.4.0/go.mod h1:HRJckNq8s6UAK2r5PsXhFQS+FGk0v5hvO7TmEVrAP5w=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.7.4 h1:QmUZXrvJ9qZ3GfWvQ+2wnW/1ePrTEJqPKMYEU3lD/DM=
