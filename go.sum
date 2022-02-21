@@ -12,8 +12,8 @@ github.com/dsnet/golib v0.0.0-20171103203638-1ea166775780/go.mod h1:Lj+Z9rebOhdf
 github.com/forewing/csgo-rcon v1.3.0 h1:y1BwWL3mLZeXQkOY1ZGD8cq1jOYBi9UXMrBSafNj+zg=
 github.com/forewing/csgo-rcon v1.3.0/go.mod h1:hD/ht7ta+ub49Jx+FiP3tI7vKRt/bDEc7vrj3/iOrjw=
 github.com/forewing/gobuild v0.4.0/go.mod h1:HRJckNq8s6UAK2r5PsXhFQS+FGk0v5hvO7TmEVrAP5w=
-github.com/forewing/gobuild v1.1.0 h1:q+MexbcmunNawaj4aDf1OizU7hodP6SfF931Li0WTmw=
-github.com/forewing/gobuild v1.1.0/go.mod h1:Iq1H8foc1dNSMylJYolDr6fB+5Q+9gdMCuyWVZBpfPQ=
+github.com/forewing/gobuild v1.1.1 h1:eCtGqUNyjP8XvqDICG8WN6S8Lo5JyACc55NdS3H/6nM=
+github.com/forewing/gobuild v1.1.1/go.mod h1:Iq1H8foc1dNSMylJYolDr6fB+5Q+9gdMCuyWVZBpfPQ=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.7.7 h1:3DoBmSbJbZAWqXJC3SLjAPfutPJJRN1U5pALB7EeTTs=
