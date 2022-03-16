@@ -16,5 +16,6 @@ webrcon-server
 # Config
 config.json
 
-# Bindata
-bindata.go
+# Go Workspace
+go.work
+go.work.sum
