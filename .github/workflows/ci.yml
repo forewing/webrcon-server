@@ -9,7 +9,7 @@ on:
       - master
 
 env:
-  go-version: "1.18"
+  go-version: "1.19"
 
 jobs:
   ci:
