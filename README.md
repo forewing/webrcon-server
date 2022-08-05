@@ -1,4 +1,4 @@
-# WEBRCON-Server
+# WebRcon
 
 A web based control panel for srcds' RCON protocol (CS:GO, Minecraft, etc.).
 
