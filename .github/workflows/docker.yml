@@ -28,6 +28,7 @@ jobs:
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v4
+        if: ${{ github.event_name == 'push' }}
         with:
           images: ${{ secrets.DOCKER_REPO }}
 
