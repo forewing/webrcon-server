@@ -1,11 +1,14 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/gin-gonic/gin"
+	"sigs.k8s.io/yaml"
 )
 
 const (
@@ -19,6 +22,31 @@ var (
 	usePresetEmbedFS = true
 )
 
+func convertYAMLPreset(f *os.File) (string, error) {
+	tmpFile, err := os.Create(f.Name() + ".json")
+	if err != nil {
+		return "", err
+	}
+	defer tmpFile.Close()
+
+	yamlContent, err := io.ReadAll(f)
+	if err != nil {
+		return "", err
+	}
+
+	jsonContent, err := yaml.YAMLToJSON(yamlContent)
+	if err != nil {
+		return "", err
+	}
+
+	_, err = tmpFile.Write(jsonContent)
+	if err != nil {
+		return "", err
+	}
+
+	return tmpFile.Name(), nil
+}
+
 func checkPreset() {
 	if len(*flags.Preset) > 0 {
 		if _, err := presets.Open(*flags.Preset); err == nil {
@@ -27,11 +55,22 @@ func checkPreset() {
 			log.Println("Use built-in preset", usePresetPath)
 			return
 		}
-		if _, err := os.Open(*flags.Preset); err == nil {
+		if f, err := os.Open(*flags.Preset); err == nil {
+			defer f.Close()
 			usePresetPath = *flags.Preset
 			usePresetEmbedFS = false
 			log.Println("Use custom preset", *flags.Preset)
-			return
+			if strings.HasSuffix(*flags.Preset, ".yml") ||
+				strings.HasSuffix(*flags.Preset, ".yaml") {
+				newPath, err := convertYAMLPreset(f)
+				if err == nil {
+					usePresetPath = newPath
+					return
+				}
+				log.Printf("Error: failed to convert %s to json: %v", *flags.Preset, err)
+			} else {
+				return
+			}
 		}
 		log.Println("Error: load config preset", *flags.Preset, "failed, try default preset")
 	}
