@@ -1,6 +1,6 @@
 FROM golang:1.19-alpine AS builder
 RUN apk add --no-cache \
-    git
+    git tzdata
 
 WORKDIR /build
 COPY . /build/
